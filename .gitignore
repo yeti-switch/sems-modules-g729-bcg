@@ -1,0 +1,7 @@
+CMakeLists.txt.user
+build
+
+debian/files
+debian/*debhelper*
+debian/sems-modules-g729-bcg*
+

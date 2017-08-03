@@ -1,0 +1,13 @@
+Source: sems-g729-bcg
+Maintainer: Michael Furmur <m.furmur@gmail.com>
+Section: net
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 9)
+
+Package: sems-modules-g729-bcg
+Section: net
+Architecture: amd64
+Depends: sems, ${shlibs:Depends}, ${misc:Depends}
+Description: g729 codec for SEMS project
+	libbcg729 wrapper for SEMS

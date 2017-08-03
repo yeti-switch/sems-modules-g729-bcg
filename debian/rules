@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+BUILD_DIR=build
+
+dh_args=--buildsystem=cmake --builddirectory=$(BUILD_DIR)
+#dh_opts=$(addprefix -O,$(dh_args))
+#cmake_opts=-DCMAKE_CXX_COMPILER=icc -DCMAKE_C_COMPILER=icc
+
+%:
+	dh $@ $(dh_args)
+
+#override_dh_shlibdeps:
+#	@echo "skip shlibdeps"
+
+#build:
+#	dh_testdir $(dh_opts)
+#	dh_auto_configure $(dh_opts) -- $(cmake_opts)
+#	dh_auto_build $(dh_opts)
