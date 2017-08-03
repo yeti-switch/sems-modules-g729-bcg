@@ -1,4 +1,9 @@
-﻿# libbcg729 codec wrapper for SEMS
+# libbcg729 codec wrapper for SEMS
+
+
+## usage
+
+add `g729bcg` to the `load_plugins` list in `sems.conf`
 
 ## build && install
 
