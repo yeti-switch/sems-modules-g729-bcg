@@ -11,12 +11,12 @@ add `g729bcg` to the `load_plugins` list in `sems.conf`
 * build and install it (make sure that static library is also built and installed)
 * clone this repo 
 * build/install wrapper:
-  <pre>
+<pre>
 $ mkdir build && cd build
 $ cmake ..
 $ make
 $ make install
-  </pre>
+</pre>
 
 ## packaging
 
