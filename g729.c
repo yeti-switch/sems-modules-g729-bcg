@@ -116,9 +116,9 @@ static int pcm16_2_g729(
     if (!h_codec)
         return -1;
 
-    if (size % PCM_BYTES_PER_FRAME != 0) {
+    /*if (size % PCM_BYTES_PER_FRAME != 0) {
         WARN("pcm16_2_g729: number of blocks should be integral (size = %u, block size = %u)", size, PCM_BYTES_PER_FRAME);
-    }
+    }*/
 
     for(x = 0; x < size; x+=PCM_BYTES_PER_FRAME){
         bcg729Encoder(codec->enc, (int16_t *)in_buf, out_buf, &frameSize);
@@ -142,9 +142,9 @@ static int g729_2_pcm16(
     if (!h_codec)
         return -1;
 
-    if (size % G729_BYTES_PER_FRAME != 0){
+    /*if (size % G729_BYTES_PER_FRAME != 0){
         WARN("g729_2_pcm16: number of blocks should be integral (size = %u, block size = %u)", size, G729_BYTES_PER_FRAME);
-    }
+    }*/
 
     for(x = 0;x < size; x+=framesize) {
         isSID = (size - x < 8) ? 1 : 0;

@@ -1,3 +1,9 @@
+sems-g729-bcg (0.0.2) stable; urgency=low
+
+  * remove blocksize check warnings
+
+ -- Michael Furmur <m.furmur@gmail.com>  Tue, 29 Jun 2021 12:11:57 +0300
+
 sems-g729-bcg (0.0.1) stable; urgency=low
 
   * init
