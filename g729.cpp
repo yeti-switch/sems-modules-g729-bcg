@@ -85,7 +85,7 @@ long g729_create(const char* format_parameters, amci_codec_fmt_info_t* format_de
 {
     struct G729_codec *codec;
 
-    codec = calloc(sizeof(struct G729_codec), 1);
+    codec = new struct G729_codec;
     codec->enc = initBcg729EncoderChannel(G729_ENABLE_VAD);
     codec->dec = initBcg729DecoderChannel();
 
@@ -102,7 +102,7 @@ g729_destroy(long h_codec)
 
     closeBcg729DecoderChannel(codec->dec);
     closeBcg729EncoderChannel(codec->enc);
-    free(codec);
+    delete codec;
 }
 
 static int pcm16_2_g729(

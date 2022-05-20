@@ -10,7 +10,7 @@ find_package(BCG729 REQUIRED)
 
 include_directories(${SEMS_INCLUDE_DIRS} ${BCG729_INCLUDE_DIRS})
 
-set(g729bcg_SRCS g729.c)
+set(g729bcg_SRCS g729.cpp)
 set(sems_module_name g729bcg)
 set(sems_module_libs ${BCG729_STATIC_LIBRARY})
 include(${SEMS_CMAKE_DIR}/module.rules.txt)
