@@ -1,3 +1,8 @@
+sems-g729-bcg (0.0.3) stable; urgency=low
+  * fix build with libsems >= 1.84
+  * add github ci
+ -- Michael Furmur <furmur@pm.me>  Tue, 29 Jun 2021 12:11:57 +0300
+
 sems-g729-bcg (0.0.2) stable; urgency=low
 
   * remove blocksize check warnings
