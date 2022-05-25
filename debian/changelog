@@ -1,3 +1,7 @@
+sems-g729-bcg (0.0.4) stable; urgency=low
+  * fix libbcg729 includes
+ -- Michael Furmur <furmur@pm.me>  Wed, 25 May 2022 17:59:23 +0300
+
 sems-g729-bcg (0.0.3) stable; urgency=low
   * fix build with libsems >= 1.84
   * add github ci
