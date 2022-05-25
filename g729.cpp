@@ -32,9 +32,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+extern "C" {
 #include <bcg729/decoder.h>
 #include <bcg729/encoder.h>
-
+}
 
 #define G729_PAYLOAD_ID          18
 #define G729_BYTES_PER_FRAME     10
