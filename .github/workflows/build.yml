@@ -3,24 +3,43 @@ on:
   push:
     branches:
       - "*"
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: debian:bullseye
+    container: debian:bookworm
     steps:
       - name: install aux deps
-        run: apt update && apt -y --no-install-recommends install git ca-certificates curl gpg
+        run: apt update && apt -y --no-install-recommends install git ca-certificates curl gpg wget
       - name: add pgdg pkg repo
         run: >
           echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" >> /etc/apt/sources.list.d/pgdg.list &&
           curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg
       - name: add yeti pkg repo
         run: >
-          echo "deb [arch=amd64] http://pkg.yeti-switch.org/debian/bullseye 1.12 main" > /etc/apt/sources.list.d/yeti.list &&
-          curl https://pkg.yeti-switch.org/key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/pkg.yeti-switch.org.gpg
+          echo "deb [arch=amd64] https://deb.yeti-switch.org/debian/1.13 bookworm main" > /etc/apt/sources.list.d/yeti.list &&
+          wget https://deb.yeti-switch.org/yeti.gpg -O /etc/apt/trusted.gpg.d/yeti-key.asc
+
       - run: apt update
+
       - name: clone repo
         uses: actions/checkout@v3
+
       - name: install build deps
         run: apt -y --no-install-recommends build-dep .
-      - run: debuild -us -uc -b
+      - name: build
+        run: dpkg-buildpackage -us -uc -b
+
+      - uses: yeti-switch/upload-debian-pkg-action@v1
+        with:
+          pkgs: '../*.deb'
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          aws_bucket: ${{ secrets.DEB_AWS_BUCKET }}
+        env:
+          PKG_API_BASE: ${{secrets.PKG_API_BASE}}
+          AWS_ACCESS_KEY_ID: ${{secrets.DEB_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.DEB_AWS_SECRET_ACCESS_KEY}}
+          AWS_ENDPOINT_URL: ${{secrets.DEB_AWS_ENDPOINT}}
+        if: startsWith(github.ref, 'refs/tags/v')
