@@ -11,8 +11,8 @@ add `module "g729bcg"{}` in the `modules` section in `sems.conf`
 
 ## Installation via Package (bullseye)
 ```sh
-# echo "deb [arch=amd64] http://pkg.yeti-switch.org/debian/bullseye 1.12 main" > /etc/apt/sources.list.d/yeti.list
-# wget -q -O- https://pkg.yeti-switch.org/key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/kg.yeti-switch.org.gpg
+# echo "deb [arch=amd64] https://deb.yeti-switch.org/debian/1.13 bookworm main" > /etc/apt/sources.list.d/yeti.list
+# wget http://deb.yeti-switch.org/yeti.gpg -O /etc/apt/trusted.gpg.d/deb.yeti-switch.org.asc
 # apt update
 # apt install sems-modules-g729-bcg
 ```
@@ -38,7 +38,7 @@ $ cd sems-modules-g729-bcg
 
 ### build package
 ```sh
-$ debuild -us -uc -b
+$ dpkg-buildpackage -us -uc -b
 ```
 
 [Yeti]:http://yeti-switch.org/
