@@ -1,3 +1,7 @@
+sems-g729-bcg (0.0.6) stable; urgency=low
+  * add build for trixie
+ -- Michael Furmur <furmur@pm.me>  Thu, 23 Oct 2025 16:21:13 +0300
+
 sems-g729-bcg (0.0.5) stable; urgency=low
   * ci: upload pkg to aws s3
  -- Michael Furmur <furmur@pm.me>  Thu, 12 Dec 2024 21:49:02 +0200
