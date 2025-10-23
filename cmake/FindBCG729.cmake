@@ -25,7 +25,7 @@ find_library(BCG729_STATIC_LIBRARY
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(BCG729
-                                  REQUIRED_VARS BCG729_LIBRARIES BCG729_STATIC_LIBRARY
+                                  REQUIRED_VARS BCG729_LIBRARIES BCG729_STATIC_LIBRARIES
                                   VERSION_VAR BCG729_VERSION)
 
 find_library(BCG729_STATIC_LIBRARY NAMES libbcg729.la)
